@@ -30,7 +30,7 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
   selectedHierarchyId,
   onInitialHierarchyLoad,
 }) => {
-  const { token } = useAuth();
+  const { token, user } = useAuth();
   const { theme } = useTheme();
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
   const [dashboardData, setDashboardData] = useState<DashboardData | null>(
@@ -384,6 +384,34 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
           : 'bg-[#fff] border-[#ececec] border-r'
       } flex flex-col overflow-hidden shadow-lg`}
     >
+      {/* User Profile Section */}
+      <div className={`px-4 pt-4 pb-4 flex-shrink-0 border-b ${
+        theme === 'dark' ? 'border-[#364566]' : 'border-[#ececec]'
+      }`}>
+        <div className="flex items-center gap-3">
+          {/* User Avatar */}
+          <div className={`w-12 h-12 rounded-full flex items-center justify-center font-semibold text-white ${
+            theme === 'dark' ? 'bg-[#6656F5]' : 'bg-[#F56C44]'
+          }`}>
+            {user?.username ? user.username.charAt(0).toUpperCase() : 'U'}
+          </div>
+
+          {/* User Info */}
+          <div className="flex-1 min-w-0">
+            <h3 className={`text-sm font-semibold truncate ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}>
+              {user?.username || 'User'}
+            </h3>
+            <p className={`text-xs truncate ${
+              theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+            }`}>
+              {user?.email || 'user@example.com'}
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Fixed Header */}
       <div className="px-4 pt-4 pb-3 flex-shrink-0">
         <h1
