@@ -36,7 +36,7 @@ const DashboardLayout: React.FC = () => {
 
   return (
     <div
-      className={`min-h-screen w-full ${
+      className={`min-h-screen w-full overflow-x-hidden ${
         theme === 'dark' ? 'bg-[#0F172A]' : 'bg-[#F7F7F7]'
       }`}
     >

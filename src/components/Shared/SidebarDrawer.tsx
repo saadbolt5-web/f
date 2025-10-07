@@ -380,14 +380,14 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
 
   return (
     <div
-      className={`w-80 h-screen transition-colors ${
+      className={`w-[85vw] max-w-[320px] md:w-80 h-screen transition-colors ${
         theme === 'dark'
           ? 'bg-[#162345]'
           : 'bg-[#fff] border-[#ececec] border-r'
       } flex flex-col overflow-hidden shadow-lg`}
     >
-      {/* User Profile Section */}
-      <div className={`px-4 pt-3 pb-4 flex-shrink-0 border-b ${
+      {/* User Profile Section - Only visible on mobile */}
+      <div className={`md:hidden px-4 pt-3 pb-4 flex-shrink-0 border-b ${
         theme === 'dark' ? 'border-[#364566]' : 'border-[#ececec]'
       }`}>
         <div className="flex items-center gap-3">
@@ -412,11 +412,11 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
             </p>
           </div>
 
-          {/* Close Button - Only visible on mobile */}
+          {/* Close Button */}
           {onClose && (
             <button
               onClick={onClose}
-              className={`md:hidden p-2 rounded-lg transition-colors ${
+              className={`p-2 rounded-lg transition-colors ${
                 theme === 'dark'
                   ? 'hover:bg-[#1D2147] text-gray-400 hover:text-white'
                   : 'hover:bg-gray-100 text-gray-500 hover:text-gray-900'

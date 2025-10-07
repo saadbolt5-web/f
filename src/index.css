@@ -4,7 +4,12 @@
 
 body {
   @apply font-sans;
-  background-color: #121429
+  background-color: #121429;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
  .recharts-surface:focus {
    outline: none !important;
