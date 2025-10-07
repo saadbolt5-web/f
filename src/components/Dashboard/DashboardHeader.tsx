@@ -163,7 +163,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({
           )}
 
           <div
-            className={`hidden md:flex items-center rounded-2xl p-1.5 ${theme === 'dark' ? 'bg-[#101428]/60' : 'bg-white shadow-sm border border-[#ececec]'}`}
+            className={`hidden md:flex items-center rounded-2xl p-1.5 ${theme === 'dark' ? 'bg-[#162345] shadow-sm' : 'bg-white shadow-sm border border-[#ececec]'}`}
             style={{ paddingLeft: 8, paddingRight: 12 }}
           >
             <img
