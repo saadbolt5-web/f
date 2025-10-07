@@ -64,6 +64,7 @@ const DashboardLayout: React.FC = () => {
             onInitialHierarchyLoad={handleInitialHierarchyLoad}
             selectedDeviceId={selectedDevice?.id}
             selectedHierarchyId={selectedHierarchy?.id}
+            onClose={toggleSidebar}
           />
         </div>
 

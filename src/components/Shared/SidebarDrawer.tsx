@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search as SearchIcon, ChevronRight as ChevronRightIcon } from 'lucide-react';
+import { Search as SearchIcon, ChevronRight as ChevronRightIcon, X as XIcon } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import { useTheme } from '../../hooks/useTheme';
 import {
@@ -21,6 +21,7 @@ interface SidebarDrawerProps {
   selectedDeviceId?: string | null;
   selectedHierarchyId?: string | null;
   onInitialHierarchyLoad?: (hierarchy: HierarchyNode) => void;
+  onClose?: () => void;
 }
 
 const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
@@ -29,6 +30,7 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
   selectedDeviceId,
   selectedHierarchyId,
   onInitialHierarchyLoad,
+  onClose,
 }) => {
   const { token, user } = useAuth();
   const { theme } = useTheme();
@@ -385,7 +387,7 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
       } flex flex-col overflow-hidden shadow-lg`}
     >
       {/* User Profile Section */}
-      <div className={`px-4 pt-4 pb-4 flex-shrink-0 border-b ${
+      <div className={`px-4 pt-3 pb-4 flex-shrink-0 border-b ${
         theme === 'dark' ? 'border-[#364566]' : 'border-[#ececec]'
       }`}>
         <div className="flex items-center gap-3">
@@ -409,6 +411,20 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
               {user?.email || 'user@example.com'}
             </p>
           </div>
+
+          {/* Close Button - Only visible on mobile */}
+          {onClose && (
+            <button
+              onClick={onClose}
+              className={`md:hidden p-2 rounded-lg transition-colors ${
+                theme === 'dark'
+                  ? 'hover:bg-[#1D2147] text-gray-400 hover:text-white'
+                  : 'hover:bg-gray-100 text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              <XIcon className="w-5 h-5" />
+            </button>
+          )}
         </div>
       </div>
 
