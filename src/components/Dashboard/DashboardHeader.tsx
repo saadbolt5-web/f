@@ -150,15 +150,17 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({
       {/* Top Row */}
       <div className="h-16 md:h-20 px-4 md:px-6 flex items-center justify-between">
         <div className="flex items-center gap-4 md:gap-6 lg:gap-8">
-          <button
-            onClick={toggleSidebar}
-            className={`md:hidden flex items-center justify-center transition-colors ${
-              theme === 'dark' ? 'text-gray-400 hover:text-gray-200' : 'text-[#555758] hover:text-gray-900'
-            }`}
-            aria-label="Toggle menu"
-          >
-            {isSidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          {!isSidebarOpen && (
+            <button
+              onClick={toggleSidebar}
+              className={`md:hidden flex items-center justify-center transition-colors ${
+                theme === 'dark' ? 'text-gray-400 hover:text-gray-200' : 'text-[#555758] hover:text-gray-900'
+              }`}
+              aria-label="Toggle menu"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+          )}
 
           <div
             className={`hidden md:flex items-center rounded-2xl p-1.5 ${theme === 'dark' ? 'bg-[#101428]/60' : 'bg-white shadow-sm border border-[#ececec]'}`}
